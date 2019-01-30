@@ -7,7 +7,7 @@ namespace DashboardHelper
     {
         static void Main(string[] args)
         {
-            WebServer ws = new WebServer(SendResponse, "http://localhost:8080/system/infos/");
+            WebServer ws = new WebServer(SendResponse, "http://31.172.80.113:8010/system/infos/");
             ws.Run();
             Console.WriteLine("A simple webserver. Press a key to quit.");
             Console.ReadKey();
@@ -16,9 +16,10 @@ namespace DashboardHelper
 
         public static string SendResponse(HttpListenerRequest request)
         {
-            string OSinfo = System.Runtime.InteropServices.RuntimeInformation.OSDescription;
-            string response = "{" + OSinfo + "}";
-            return response;
+            JSON json = new JSON();
+            SystemInfo sysinfo = new SystemInfo();
+            json.addArgument("SystemOS", sysinfo.OS);
+            return json.build();
         }
     }
 }

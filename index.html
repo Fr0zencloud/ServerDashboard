@@ -3,6 +3,7 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
     <link rel="icon" href="favicon.ico" type="image/x-icon">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
 </head>
 <body>
     <div id="menu">
@@ -20,6 +21,9 @@
         </div>
     </div>
     <div id="infos">
+        <div class="item">
+            <h2 id="os">OS: Unkown</h2>
+        </div>
         <div class="item">
             <span class="indicator green"></span>
             <h2>CPU: 40°C</h2>
@@ -51,6 +55,15 @@
                 <h1 class="title">CS:GO</h1>
                 <h2 class="value">Starting...</h2>
         </button>
-        
     </div>
+    <script>
+        let os_txt = document.getElementById("os");
+        function getInfos() {
+            $.getJSON("http://31.172.80.113:8010/system/infos/", function (data) {
+                os_txt.innerText = "OS: " + data.SystemOS;
+            });
+        setTimeout(getInfos, 60000);
+        }
+        getInfos();
+    </script>
 </body>
