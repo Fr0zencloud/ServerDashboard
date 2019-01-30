@@ -12,10 +12,14 @@ namespace DashboardHelper
         {
             get
             {
-                if(this.os != null)
-                    return this.os;
+                if (this.os.Contains("Linux") && this.os != null)
+                {
+                    return this.os.Split(" #")[0];
+                }
                 else
+                {
                     return "unknown";
+                }
             }
             set
             {

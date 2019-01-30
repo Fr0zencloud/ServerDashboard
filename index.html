@@ -38,7 +38,7 @@
                 </div>
     </div>
     <div id="content">
-        <button class="tile red">
+        <button class="tile red" id="tile_discord">
             <i class="fab fa-discord"></i>
             <h1 class="title">Discord Bot</h1>
             <h2 class="value">Stopped</h2>
@@ -58,9 +58,29 @@
     </div>
     <script>
         let os_txt = document.getElementById("os");
+        let discord = document.getElementById("tile_discord");
+        //let url = "http://31.172.80.113:8010/system/infos/";
+        let url = "http://localhost:8080/system/infos/";
+
+        function firstToUpper(string) 
+        {
+            return string.charAt(0).toUpperCase() + string.slice(1);
+        }
+
         function getInfos() {
-            $.getJSON("http://31.172.80.113:8010/system/infos/", function (data) {
+            $.getJSON(url, function (data) {
                 os_txt.innerText = "OS: " + data.SystemOS;
+                discord.children[2].innerText = firstToUpper(data.DiscordBot);
+                if(data.DiscordBot === "running"){
+                    discord.classList.remove(discord.classList.item(discord.classList.length - 1));
+                    discord.classList.add("green");
+                }else if(data.DiscordBot.valueOf() === "starting"){
+                    discord.classList.remove(discord.classList.item(discord.classList.length - 1));
+                    discord.classList.add("yellow");
+                }else if(data.DiscordBot.valueOf() === "stopped"){
+                    discord.classList.remove(discord.classList.item(discord.classList.length - 1));
+                    discord.classList.add("red");
+                }
             });
         setTimeout(getInfos, 60000);
         }
