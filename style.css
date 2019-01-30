@@ -1,0 +1,165 @@
+body{
+    background-color: #333333;
+    margin: 0;
+    font-family: Lato, sans-serif;
+    color: white;
+}
+
+#menu{
+    width: 100%;
+    height: 3rem;
+    background-color: #3498db;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    vertical-align: middle;
+}
+
+#menu .item{
+    margin: auto 0 auto 1rem;
+    max-height: 3rem;
+    display: inline-flex;
+}
+
+#menu .item i{
+    font-size: 2.25rem;
+    margin: auto 0.5rem auto 0.5rem;
+}
+
+#infos{
+    width: 100%;
+    height: 3rem;
+    background-color: #34495e;
+    display: flex;
+}
+
+#infos .item{
+    padding: 0 1rem 0 1rem;
+    max-height: 3rem;
+    height: 100%;
+    display: inline-flex;
+    border-left: 0.1rem solid white;
+}
+
+#infos .item *{
+    align-self: center;
+}
+
+
+#infos .item i{
+    font-size: 2.25rem;
+    margin: auto 0.5rem auto 0.5rem;
+}
+
+.indicator{
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+}
+
+.green{
+    background-color: #2ecc71;
+    border: 0.1rem solid #27ae60;
+}
+
+.green:active{
+    background-color: #27ae60;
+}
+
+.yellow{
+    background-color: #f1c40f;
+    border: 0.1rem solid #f39c12;
+}
+
+.yellow:active{
+    background-color: #f39c12;
+}
+
+.red{
+    background-color: #e74c3c;
+    border: 0.1rem solid #c0392b;
+}
+
+.red:active{
+    background-color: #c0392b;
+}
+
+#server-select{
+    background-color: #2980b9;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    align-self: center;
+}
+
+#content{
+    display: flex;
+    align-content: center;
+}
+
+.tile{
+    width: 15rem;
+    height: 15rem;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tile i{
+    width: 100%;
+    margin: 1rem 0 0 0;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.title{
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+    text-align: center;
+    font-weight: 750;
+}
+
+.value{
+    width: 100%;
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+button{
+    border: none;
+    color: white;
+    margin: 1rem;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* styling */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 100%;
+    font-size: 1em;
+    color: white;
+    background-color: inherit;
+    padding:.75em 2.5em .5em 1em;
+    background-image:url(select-arrow.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    border: 0;
+    outline: 0;
+}
+
+option{
+    background-color: inherit;
+    border: none;
+}
+
+*:focus {
+    outline: none;
+}

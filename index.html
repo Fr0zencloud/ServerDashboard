@@ -1,0 +1,56 @@
+<head>
+    <title>Server Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.0/css/all.css" integrity="sha384-lZN37f5QGtY3VHgisS14W3ExzMWZxybE1SJSEsQp9S+oqd12jhcu+A56Ebc1zFSJ" crossorigin="anonymous">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+<body>
+    <div id="menu">
+        <div class="item">
+            <i class="fa fa-tachometer-alt"></i> <h2> Server Dashboard</h2>
+        </div>  
+        <div class="item" id="server-select">
+            <i class="fa fa-server"></i>
+            <select>
+                <option value="Server1">kvm-2161-10357</option>
+                <option value="Server2">Server2</option>
+                <option value="Server3">Server3</option>
+                <option value="Server4">Server4</option>
+            </select>
+        </div>
+    </div>
+    <div id="infos">
+        <div class="item">
+            <span class="indicator green"></span>
+            <h2>CPU: 40°C</h2>
+        </div>
+        <div class="item">
+                <span class="indicator yellow"></span>
+                <h2>RAM: 1024/2048Mb</h2>
+            </div>
+            <div class="item">
+                    <span class="indicator red"></span>
+                    <h2>Disk: 4GB free of 111GB</h2>
+                </div>
+    </div>
+    <div id="content">
+        <button class="tile red">
+            <i class="fab fa-discord"></i>
+            <h1 class="title">Discord Bot</h1>
+            <h2 class="value">Stopped</h2>
+        </button>
+
+        <button class="tile green">
+                <i class="fab fa-jira"></i>
+                <h1 class="title">Jira</h1>
+                <h2 class="value">Running</h2>
+        </button>
+
+        <button class="tile yellow">
+                <i class="fa fa-gamepad"></i>
+                <h1 class="title">CS:GO</h1>
+                <h2 class="value">Starting...</h2>
+        </button>
+        
+    </div>
+</body>
