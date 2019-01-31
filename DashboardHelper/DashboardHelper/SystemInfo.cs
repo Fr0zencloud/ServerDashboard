@@ -16,6 +16,9 @@ namespace DashboardHelper
                 {
                     return this.os.Split(" #")[0];
                 }
+                else if (this.os.Contains("Windows")) {
+                    return this.os.Split("Microsoft ")[1];
+                }
                 else
                 {
                     return "unknown";

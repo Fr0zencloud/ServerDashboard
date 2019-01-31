@@ -44,16 +44,16 @@
             <h2 class="value">Stopped</h2>
         </button>
 
-        <button class="tile green">
+        <button class="tile red">
                 <i class="fab fa-jira"></i>
                 <h1 class="title">Jira</h1>
-                <h2 class="value">Running</h2>
+                <h2 class="value">Stopped</h2>
         </button>
 
-        <button class="tile yellow">
+        <button class="tile red">
                 <i class="fa fa-gamepad"></i>
                 <h1 class="title">CS:GO</h1>
-                <h2 class="value">Starting...</h2>
+                <h2 class="value">Stopped</h2>
         </button>
     </div>
     <script>
@@ -67,23 +67,42 @@
             return string.charAt(0).toUpperCase() + string.slice(1);
         }
 
+        function setTileColor(tile, color){
+            tile.classList.remove(tile.classList.item(tile.classList.length - 1));
+            tile.classList.add(color);
+        }
+
+        function setTileText(tile, text){
+            tile.children[2].innerText = firstToUpper(text);
+        }
+
         function getInfos() {
             $.getJSON(url, function (data) {
                 os_txt.innerText = "OS: " + data.SystemOS;
-                discord.children[2].innerText = firstToUpper(data.DiscordBot);
+                setTileText(discord, data.DiscordBot);
                 if(data.DiscordBot === "running"){
-                    discord.classList.remove(discord.classList.item(discord.classList.length - 1));
-                    discord.classList.add("green");
+                    setTileColor(discord, "green");
                 }else if(data.DiscordBot.valueOf() === "starting"){
-                    discord.classList.remove(discord.classList.item(discord.classList.length - 1));
-                    discord.classList.add("yellow");
+                    setTileColor(discord, "yellow");
                 }else if(data.DiscordBot.valueOf() === "stopped"){
-                    discord.classList.remove(discord.classList.item(discord.classList.length - 1));
-                    discord.classList.add("red");
+                    setTileColor(discord, "red");
                 }
             });
-        setTimeout(getInfos, 60000);
+        setTimeout(getInfos, 10000);
         }
         getInfos();
+
+        document.getElementById("tile_discord").addEventListener("click", startDiscord);
+
+        function startDiscord(){
+            setTileColor(discord, "yellow");
+            setTileText(discord, "starting...");
+            setTimeout(test, 3752);
+        }
+
+        function test(){
+            setTileColor(discord, "green");
+            setTileText(discord, "running");
+        }
     </script>
 </body>

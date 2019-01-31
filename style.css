@@ -62,26 +62,16 @@ body{
     border: 0.1rem solid #27ae60;
 }
 
-.green:active{
-    background-color: #27ae60;
-}
 
 .yellow{
     background-color: #f1c40f;
     border: 0.1rem solid #f39c12;
 }
 
-.yellow:active{
-    background-color: #f39c12;
-}
 
 .red{
     background-color: #e74c3c;
     border: 0.1rem solid #c0392b;
-}
-
-.red:active{
-    background-color: #c0392b;
 }
 
 #server-select{

@@ -17,7 +17,6 @@ namespace DashboardHelper
 #endif
 
             ws.Run();
-            Console.WriteLine("A simple webserver. Press a key to quit.");
             task.Start();
             Console.ReadLine();
         }
