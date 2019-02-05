@@ -6,18 +6,16 @@ namespace DashboardHelper
 {
     class Program
     {
-        private static Task task = new Task("test");
+        private static Task minecraft = new Task("minecraft@vanilla");
+        private static Task jira = new Task("jira");
 
         static void Main(string[] args)
         {
-#if DEBUG
-            WebServer ws = new WebServer(SendResponse, "http://localhost:8080/system/infos/");
-#else
-    WebServer ws = new WebServer(SendResponse, "http://31.172.80.113:8010/system/infos/");      
-#endif
+            WebServer ws = new WebServer(SendResponse, "http://31.172.80.113:8010/system/infos/");  
+            WebServer startTaskWebServer = new WebServer(StartTask, "http://31.172.80.113:8010/system/start/");
 
             ws.Run();
-            task.Start();
+            startTaskWebServer.Run();
             Console.ReadLine();
         }
 
@@ -26,7 +24,22 @@ namespace DashboardHelper
             JSON json = new JSON();
             SystemInfo sysinfo = new SystemInfo();
             json.addArgument("SystemOS", sysinfo.OS);
-            json.addArgument("DiscordBot", task.status());
+            json.addArgument("Minecraft", minecraft.status());
+            json.addArgument("Jira", jira.status());
+            return json.build();
+        }
+
+        public static string StartTask(HttpListenerRequest request) {
+            Task[] tasks = new Task[] { jira, minecraft };
+            JSON json = new JSON();
+            foreach (Task task in tasks)
+            {
+                if (task.getName().Equals(request.QueryString["task"])) {
+                    task.Start();
+                    json.addArgument("started", task.getName());
+                }
+            }
+           
             return json.build();
         }
     }

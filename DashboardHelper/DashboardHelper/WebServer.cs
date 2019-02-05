@@ -3,6 +3,8 @@ using System.Net;
 using System.Threading;
 using System.Linq;
 using System.Text;
+using System.Web;
+using System.Collections.Generic;
 
 namespace DashboardHelper
 {
@@ -76,6 +78,21 @@ namespace DashboardHelper
         {
             _listener.Stop();
             _listener.Close();
+        }
+
+        private Dictionary<string, string> getPOST(string rawData) {
+            Dictionary<string, string> postParams = new Dictionary<string, string>();
+            string[] rawParams = rawData.Split('&');
+            foreach (string param in rawParams)
+            {
+                string[] kvPair = param.Split('=');
+                string key = kvPair[0];
+                string value = HttpUtility.UrlDecode(kvPair[1]);
+                postParams.Add(key, value);
+            }
+
+            //Usage
+            return postParams;
         }
     }
 }

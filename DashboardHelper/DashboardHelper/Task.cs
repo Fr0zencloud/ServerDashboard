@@ -2,76 +2,47 @@
 using System.Collections.Generic;
 using System.Text;
 using System.Diagnostics;
+using DashboardHelper;
 
 namespace DashboardHelper
 {
     class Task
     {
         private string task;
-        private bool isRunning = false;
-        private bool isStarting = false;
-        Process process = new Process
-        {
-            StartInfo = new ProcessStartInfo
-            {
-                FileName = "dotnet",
-                Arguments = @"C:\Users\niki\Documents\GitHub\AeroBot\DiscordAeroBot\bin\Debug\netcoreapp2.1\DiscordAeroBot.dll",
-                WorkingDirectory = @"C:\Users\niki\Documents\GitHub\AeroBot\DiscordAeroBot\bin\Debug\netcoreapp2.1\",
-                UseShellExecute = true,
-                RedirectStandardOutput = false,
-                RedirectStandardError = false,
-                CreateNoWindow = true
-            }
-
-        };
+        private string start;
+        private string stop;
+        private string isActive;
 
         public Task(string _task) {
             this.task = _task;
+            this.start = "systemctl start " + _task;
+            this.stop = "systemctl stop " + _task;
+            this.isActive = "systemctl is-active " + _task;
         }
 
-        public void Start() {
-            this.isStarting = true;
-            try
-            {
-                process.Start();
-                checkStatus();
-            }
-            catch(Exception e) {
-                Console.WriteLine(e);
-            }
+        public string getName() {
+            return this.task;
         }
 
-        private void checkStatus() {
-            if (!process.HasExited)
-            {
-                this.isStarting = false;
-                this.isRunning = true;
-            }
-            else if (process.HasExited)
-            {
-                this.isRunning = false;
-                this.isStarting = false;
-            }
+        public string Start() {
+            return start.Bash();
         }
 
         public string status() {
-            checkStatus();
-            if (!isRunning && !isStarting)
-            {
-                return "stopped";
-            }
-            else if (isRunning)
+            string output = isActive.Bash().Replace("\n", "");
+            Console.WriteLine("[" + DateTime.Now + "] " + this.task + ": [" + output + "]");
+            if (output.Equals("active"))
             {
                 return "running";
             }
-            else if (isStarting) {
-                return "starting";
+            else if (output.Equals("inactive")) {
+                return "stopped";
             }
             return "unkown";
         }
 
-        public void Stop() {
-            process.Close();
+        public string Stop() {
+           return stop.Bash();
         }
     }
 }

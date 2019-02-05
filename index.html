@@ -44,23 +44,36 @@
             <h2 class="value">Stopped</h2>
         </button>
 
-        <button class="tile red">
+        <button class="tile red" id="tile_jira">
                 <i class="fab fa-jira"></i>
                 <h1 class="title">Jira</h1>
                 <h2 class="value">Stopped</h2>
         </button>
 
-        <button class="tile red">
+        <button class="tile red" id="tile_csgo">
                 <i class="fa fa-gamepad"></i>
                 <h1 class="title">CS:GO</h1>
                 <h2 class="value">Stopped</h2>
+        </button>
+
+        <button class="tile red" id="tile_minecraft">
+            <i class="fa fa-gamepad"></i>
+            <h1 class="title">Minecraft</h1>
+            <h2 class="value">Stopped</h2>
         </button>
     </div>
     <script>
         let os_txt = document.getElementById("os");
         let discord = document.getElementById("tile_discord");
-        //let url = "http://31.172.80.113:8010/system/infos/";
-        let url = "http://localhost:8080/system/infos/";
+        let jira = document.getElementById("tile_jira");
+        let minecraft = document.getElementById("tile_minecraft");
+
+        discord.addEventListener("click", function() {start("discord", discord);},false);
+        jira.addEventListener("click", function() {start("jira", jira);},false);
+        minecraft.addEventListener("click", function() {start("minecraft@vanilla", minecraft);},false);
+
+        let url = "http://31.172.80.113:8010/system/infos/";
+        //let url = "http://localhost:8080/system/infos/";
 
         function firstToUpper(string) 
         {
@@ -76,33 +89,31 @@
             tile.children[2].innerText = firstToUpper(text);
         }
 
+        function updateTileStatus(tile, data){
+            if(data === "running"){
+                setTileColor(tile, "green");
+            }else if(data.valueOf() === "starting"){
+                setTileColor(tile, "yellow");
+            }else if(data.valueOf() === "stopped"){
+                setTileColor(tile, "red");
+            }
+            setTileText(tile, data);
+        }
+
         function getInfos() {
             $.getJSON(url, function (data) {
                 os_txt.innerText = "OS: " + data.SystemOS;
-                setTileText(discord, data.DiscordBot);
-                if(data.DiscordBot === "running"){
-                    setTileColor(discord, "green");
-                }else if(data.DiscordBot.valueOf() === "starting"){
-                    setTileColor(discord, "yellow");
-                }else if(data.DiscordBot.valueOf() === "stopped"){
-                    setTileColor(discord, "red");
-                }
+                updateTileStatus(jira, data.Jira);
+                updateTileStatus(minecraft, data.Minecraft);
             });
         setTimeout(getInfos, 10000);
         }
         getInfos();
 
-        document.getElementById("tile_discord").addEventListener("click", startDiscord);
-
-        function startDiscord(){
-            setTileColor(discord, "yellow");
-            setTileText(discord, "starting...");
-            setTimeout(test, 3752);
-        }
-
-        function test(){
-            setTileColor(discord, "green");
-            setTileText(discord, "running");
+        function start(task, tile){
+            $.getJSON("http://31.172.80.113:8010/system/start?task=" + task);
+            setTileColor(tile, "yellow");
+            setTileText(tile, "starting...");
         }
     </script>
 </body>
