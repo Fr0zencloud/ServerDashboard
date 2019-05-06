@@ -2,3 +2,4 @@
 .vscode/
 /DashboardHelper/DashboardHelper/bin/
 /DashboardHelper/DashboardHelper/obj/
+node_modules
