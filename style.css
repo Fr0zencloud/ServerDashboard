@@ -15,6 +15,7 @@ body{
     vertical-align: middle;
 }
 
+
 #menu .item{
     margin: auto 0 auto 1rem;
     max-height: 3rem;
@@ -74,6 +75,11 @@ body{
     border: 0.1rem solid #c0392b;
 }
 
+.blue {
+    background-color: #3498db;
+    border: 0.1rem solid #2980b9;
+}
+
 #server-select{
     background-color: #2980b9;
 }
@@ -85,12 +91,14 @@ h1, h2, h3, h4, h5, h6{
 
 #content{
     display: flex;
+    flex-wrap: wrap;
     align-content: center;
 }
 
 .tile{
     width: 15rem;
     height: 15rem;
+    margin: .9rem;
     display: flex;
     vertical-align: middle;
     align-items: center;
@@ -103,6 +111,18 @@ h1, h2, h3, h4, h5, h6{
     margin: 1rem 0 0 0;
     text-align: center;
     font-size: 2rem;
+}
+
+.tile .info {
+    position: relative;
+    top: -180px;
+    right: -100px;
+    color: white;
+}
+
+.tile .info i {
+    font-size: 1rem;
+    margin: 0;
 }
 
 .title{
@@ -121,7 +141,6 @@ h1, h2, h3, h4, h5, h6{
 button{
     border: none;
     color: white;
-    margin: 1rem;
     text-align: center;
     text-decoration: none;
     display: inline-block;

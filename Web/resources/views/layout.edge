@@ -1,0 +1,19 @@
+<head>
+    <title>Server Dashboard</title>
+    <meta charset="utf-8">
+    {{ style('style.css') }}
+    {{ style('https://use.fontawesome.com/releases/v5.7.0/css/all.css') }}
+    {{ script('https://code.jquery.com/jquery-3.3.1.min.js') }}
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
+</head>
+
+<body>
+    <div id="menu">
+        @!section('nav')
+    <div id="infos">
+        @!section('sysInfos')
+    </div>
+    <div id="content">
+        @!section('content')
+    </div>
+</body>
