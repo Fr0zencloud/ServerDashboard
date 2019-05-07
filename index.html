@@ -73,6 +73,7 @@
         let machine_txt = document.getElementById("server-select").children[1].children[0]
         let cpu_txt = document.getElementById("cpu");
         let ram_txt = document.getElementById("ram");
+        let disk_txt = document.getElementById("diskspace");
 
         //tiles
         let discord = document.getElementById("tile_discord");
@@ -90,7 +91,8 @@
             os_txt.innerText = "OS: " + data.platform;
             machine_txt.innerText = data.hostname;
             cpu_txt.innerText = "CPU: " + data.cpu;
-            ram_txt.innerText = "RAM: " + data.freeMemory + "/" + data.totalMemory + "Gb"
+            ram_txt.innerText = "RAM: " + data.freeMemory + "/" + data.totalMemory + "Gb";
+            disk_txt.innerText = "Disk: " + Math.round(data.diskFree) + "GB free of " + Math.round(data.diskTotal) + "GB";
         });
 
 

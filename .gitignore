@@ -3,3 +3,4 @@
 /DashboardHelper/DashboardHelper/bin/
 /DashboardHelper/DashboardHelper/obj/
 node_modules
+.DS_Store
