@@ -1,92 +1,265 @@
-@import url('https://fonts.googleapis.com/css?family=Montserrat:300');
-
-html, body {
-  height: 100%;
-  width: 100%;
+body{
+    background-color: #333333;
+    margin: 0;
+    font-family: Lato, sans-serif;
+    color: white;
 }
 
-body {
-  font-family: 'Montserrat', sans-serif;
-  font-weight: 300;
-  background-image: url("/splash.png");
-  background-color: #220052;
-}
-
-* {
-  margin: 0;
-  padding: 0;
-}
-
-section {
-  height: 100%;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  max-width: 536px;
-  margin: auto;
-  position: relative;
-}
-
-section:before {
-  content: "";
-  position: absolute;
-  background: url("/pyramid.png") no-repeat;
-  background-size: 100%;
-  width: 100%;
-  height: 402px;
-  z-index: -1;
-}
-
-.logo {
-  background: url("/logo.svg") no-repeat;
-  width: 36px;
-  height: 33px;
-  background-size: 100%;
-  margin-bottom: 35px;
-  opacity: 0;
-  animation: slideUp 1s cubic-bezier(0.19, 1, 0.30, 1) 1.3s forwards;
-}
-
-.title {
-  background: url("/title.svg") no-repeat;
-  width: 219px;
-  height: 36px;
-  background-size: 100%;
-  opacity: 0;
-  animation: slideUp 1s cubic-bezier(0.19, 1, 0.30, 1) 0.2s forwards;
-}
-
-.subtitle {
-  margin-top: 25px;
-  color: #BDB3CB;
-  font-size: 17px;
-  text-align: center;
-  letter-spacing: 0.5;
-  opacity: 0;
-  animation: slideUp 1s cubic-bezier(0.19, 1, 0.30, 1) 0.5s forwards;
+#menu{
+    width: 100%;
+    height: 3rem;
+    background-color: #3498db;
+    display: flex;
+    flex-direction: row;
+    align-content: center;
+    vertical-align: middle;
 }
 
 
-a {
-  color: inherit;
-  text-decoration: underline;
+#menu .item{
+    margin: auto 0 auto 1rem;
+    max-height: 3rem;
+    display: inline-flex;
 }
 
-p {
-  margin: 0.83rem 0;
+#menu .item i{
+    font-size: 2.25rem;
+    margin: auto 0.5rem auto 0.5rem;
 }
 
-@keyframes slideUp {
-  0% {
-    transform: translateY(40px);
-    opacity: 0;
+#infos{
+    width: 100%;
+    height: 3rem;
+    background-color: #34495e;
+    display: flex;
+}
+
+#infos .item{
+    padding: 0 1rem 0 1rem;
+    max-height: 3rem;
+    height: 100%;
+    display: inline-flex;
+    border-left: 0.1rem solid white;
+}
+
+#infos .item *{
+    align-self: center;
+}
+
+
+#infos .item i{
+    font-size: 2.25rem;
+    margin: auto 0.5rem auto 0.5rem;
+}
+
+.indicator{
+    width: 1rem;
+    height: 1rem;
+    margin-right: 0.5rem;
+}
+
+.green{
+    background-color: #2ecc71;
+    border: 0.1rem solid #27ae60;
+}
+
+
+.yellow{
+    background-color: #f1c40f;
+    border: 0.1rem solid #f39c12;
+}
+
+
+.red{
+    background-color: #e74c3c;
+    border: 0.1rem solid #c0392b;
+}
+
+.blue {
+    background-color: #3498db;
+    border: 0.1rem solid #2980b9;
+}
+
+#server-select{
+    background-color: #2980b9;
+}
+
+h1, h2, h3, h4, h5, h6{
+    margin: 0;
+    align-self: center;
+}
+
+#content{
+    display: flex;
+    flex-wrap: wrap;
+    align-content: center;
+}
+
+.tile{
+    width: 15rem;
+    height: 15rem;
+    margin: .9rem;
+    display: flex;
+    vertical-align: middle;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.tile i{
+    width: 100%;
+    margin: 1rem 0 0 0;
+    text-align: center;
+    font-size: 2rem;
+}
+
+.tile .info {
+    position: relative;
+    top: -180px;
+    right: -100px;
+    color: white;
+}
+
+.tile .info i {
+    font-size: 1rem;
+    margin: 0;
+}
+
+.title{
+    width: 100%;
+    margin: 1rem 0 1rem 0;
+    text-align: center;
+    font-weight: 750;
+}
+
+.value{
+    width: 100%;
+    margin: 0 0 1rem 0;
+    text-align: center;
+}
+
+button{
+    border: none;
+    color: white;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    cursor: pointer;
+}
+
+/* styling */
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    height: 100%;
+    font-size: 1em;
+    color: white;
+    background-color: inherit;
+    padding:.75em 2.5em .5em 1em;
+    background-image:url(select-arrow.png);
+    background-position: right;
+    background-repeat: no-repeat;
+    border: 0;
+    outline: 0;
+}
+
+option{
+    background-color: inherit;
+    border: none;
+}
+
+*:focus {
+    outline: none;
+}
+
+button.item {
+    background-color: #2980b9;
+    height: 38px;
+    margin-left: .5rem !important;
+}
+
+button.item i {
+    font-size: 1.75rem !important;
+}
+
+/* The Modal (background) */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
   }
-  50% {
-    opacity: 0.2%;
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #333333;
+    margin: auto;
+    padding: 0;
+    width: 80%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s
   }
-  100% {
-    opacity: 1;
-    transform: none;
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
   }
-}
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+  /* The Close Button */
+  .close {
+    color: white;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+  }
+  
+  .close:hover,
+  .close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+  }
+  
+  .modal-header {
+    padding: 2px 16px;
+    background-color: #3498db;
+    color: white;
+  }
+  
+  .modal-body {padding: 2px 16px;}
+  
+  .modal-footer {
+    padding: .25rem;
+    background-color: #2980b9;
+    color: white;
+  }
+
+  .modal button {
+      height: 2rem;
+  }
+
+  .modal button.add {
+      background-color: #27ae60;
+  }
+
+  .modal button.cancel {
+      background-color: #e74c3c;
+  }

@@ -4,16 +4,19 @@
     {{ style('style.css') }}
     {{ style('https://use.fontawesome.com/releases/v5.7.0/css/all.css') }}
     {{ script('https://code.jquery.com/jquery-3.3.1.min.js') }}
+    {{ script('js/serverdashboard.js') }}
     <link rel="icon" href="favicon.ico" type="image/x-icon">
 </head>
 
 <body>
     <div id="menu">
-        @!section('nav')
+        @include('nav')
+    </div>
     <div id="infos">
-        @!section('sysInfos')
+        @include('sysinfos')
     </div>
     <div id="content">
         @!section('content')
     </div>
 </body>
+{{ script('js/modal.js') }}

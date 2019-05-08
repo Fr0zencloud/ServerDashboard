@@ -1,1 +1,5 @@
 @layout('layout')
+@section('content')
+@!component('components.item', { id: 'discord', color: 'red', icon: 'discord', title: 'Discord', value: 'Stopped' })
+@!component('components.item', { id: 'newService', color: 'blue', icon: 'plus fas', title: 'Add new Service', value: '' })
+@endsection
