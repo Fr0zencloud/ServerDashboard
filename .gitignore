@@ -4,3 +4,4 @@
 /DashboardHelper/DashboardHelper/obj/
 node_modules
 .DS_Store
+Web/database/adonis.sqlite

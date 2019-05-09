@@ -12,21 +12,6 @@
             <option value="Server4">Server4</option>
         </select>
     </div>
-    <button class="item" id="openAddServerModalBtn"><i class="fas fa-plus fa-sm"></i></button>
+    <button class="item" id="openAddServerModalBtn" data-modal="addServerModal"><i class="fas fa-plus fa-sm"></i></button>
     
-    <div id="addServerModal" class="modal">
-        <div class="modal-content">
-            <div class="modal-header">
-                <span class="close">&times;</span>
-                <h2>Add new Server</h2>
-            </div>
-            <div class="modal-body">
-                <p>Some text in the Modal Body</p>
-                <p>Some other text...</p>
-            </div>
-            <div class="modal-footer">
-                <button class="add">Add</button>
-                <button class="cancel">Cancel</button>
-            </div>
-        </div>
-    </div>
+    @!component('components.modal', { id: 'addServer', title: 'Add new Server', main: 'Test'})

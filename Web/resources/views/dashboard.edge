@@ -1,5 +1,11 @@
 @layout('layout')
 @section('content')
-@!component('components.item', { id: 'discord', color: 'red', icon: 'discord', title: 'Discord', value: 'Stopped' })
-@!component('components.item', { id: 'newService', color: 'blue', icon: 'plus fas', title: 'Add new Service', value: '' })
+
+@each(service in services)
+    @!component('components.item', { id: service.id, color: 'red', icon: service.icon, title: service.title, value: 'stopped' })
+@endeach
+
+<!-- New Service -->
+@!component('components.item', { id: 'addNewServiceModalBtn', color: 'blue', icon: 'plus fas', title: 'Add new Service', modal: 'newService'})
+@!component('components.modal', { id: 'newService', title: 'Add new Service', main: 'Test', csrfField: csrfField()})
 @endsection

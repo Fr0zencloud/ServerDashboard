@@ -1,5 +1,11 @@
-<button class="tile {{ color }}" id="{{ id }}">
-    <i class="fab fa-{{ icon }}"></i>
+<button 
+    class="tile {{ color }}"
+    id="{{ id }}"
+    @if(modal)
+        data-modal="{{ modal }}Modal"
+    @endif
+>
+    <i class="fa fa-{{ icon }}"></i>
     <h1 class="title">{{ title }}</h1>
     <h2 class="value">{{ value }}</h2>
 </button>

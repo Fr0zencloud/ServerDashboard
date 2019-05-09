@@ -1,25 +1,37 @@
-// Get the modal
-var modal = document.getElementById('addServerModal');
 
-// Get the button that opens the modal
-var btn = document.getElementById("openAddServerModalBtn");
+let modals = document.getElementsByClassName('modal');
+let buttons = document.getElementsByTagName('button');
 
-// Get the <span> element that closes the modal
-var span = document.getElementsByClassName("close")[0];
+for (let modal of modals) {
+  let addButton = modal.children[0].children[0].children[2].children[0]
+  let cancelButton = modal.children[0].children[0].children[2].children[1]
 
-// When the user clicks the button, open the modal 
-btn.onclick = function() {
-  modal.style.display = "block";
+  //close modal if clicked on the closing (x) span
+  modal.children[0].children[0].children[0].addEventListener("click", function () { closeModal(modal) });
+  cancelButton.addEventListener("click", function () { closeModal(modal) });
 }
 
-// When the user clicks on <span> (x), close the modal
-span.onclick = function() {
+for (let btn of buttons) {
+  if (btn.dataset.modal) {
+    let modal = document.getElementById(btn.dataset.modal)
+    btn.addEventListener("click", function () { openModal(modal) });
+  }
+
+}
+
+function openModal(modal) {
+  modal.style.display = "block"
+}
+
+function closeModal(modal) {
   modal.style.display = "none";
 }
 
-// When the user clicks anywhere outside of the modal, close it
-window.onclick = function(event) {
-  if (event.target == modal) {
-    modal.style.display = "none";
+
+window.onclick = function (event) {
+  for (let modal of modals) {
+    if (event.target == modal) {
+      modal.style.display = "none";
+    }
   }
 }

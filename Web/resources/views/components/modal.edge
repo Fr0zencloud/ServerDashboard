@@ -1,0 +1,20 @@
+<div class="modal" id="{{ id }}Modal">
+    <form action="/service/new" method="POST">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span class="close">&times;</span>
+                <h2>{{ title }}</h2>
+            </div>
+            <div class="modal-body">
+                {{ main }}
+                {{ csrfField }}
+                @!component('components.input', { name: 'title', value: old('title'), required: true })
+                @!component('components.input', { name: 'icon', value: old('icon'), required: true })
+            </div>
+            <div class="modal-footer">
+                <button class="add" type="submit">Add</button>
+                <button class="cancel">Cancel</button>
+            </div>
+        </div>
+    </form>
+</div>

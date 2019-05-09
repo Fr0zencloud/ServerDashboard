@@ -16,4 +16,5 @@
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
 const Route = use('Route')
 
-Route.on('/').render('dashboard')
+Route.get('/', 'DashboardController.index')
+Route.post('/service/new', 'ServiceController.store')
